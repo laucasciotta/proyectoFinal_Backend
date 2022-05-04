@@ -44,15 +44,18 @@ exports.login = async (req, res) => {
     try {
         
         const errores = validationResult(req);
+        console.log(errores)
         if (!errores.isEmpty()) {
+
             return res.status(400).json({ msg: errores.array() });
         }
+        console.log(req.body)
 
         const { email, password } = req.body;
        
         const usuario = await Usuario.findOne({ email });
         if (!usuario) {
-            return res.status(400).json({ msg: 'El Usuario no existe' });
+            return res.status(404).json({ msg: 'El Usuario no existe' });
         }
 
         
