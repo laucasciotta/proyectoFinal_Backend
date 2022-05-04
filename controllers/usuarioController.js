@@ -4,7 +4,7 @@ const { validationResult } = require("express-validator");
 
 exports.crearUsuario = async (req, res) => {
  
-  console.log (req.body)
+ 
   const errores = validationResult(req);
   if (!errores.isEmpty()) {
     return res.status(400).json({ msg: errores.array() });
@@ -29,7 +29,7 @@ exports.crearUsuario = async (req, res) => {
     
     res.send("Usuario Creado Correctamente");
   } catch (error) {
-    console.log(error);
+   
     res.status(400).send("Hubo un error");
   }
 };

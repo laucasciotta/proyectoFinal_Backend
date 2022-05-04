@@ -35,7 +35,7 @@ exports.registrar = async (req, res) => {
 
         res.send('Usuario Creado Correctamente');
     } catch (error) {
-        console.log(error);
+       
         res.status(400).send('Hubo un error');
     }
 };
@@ -44,12 +44,12 @@ exports.login = async (req, res) => {
     try {
         
         const errores = validationResult(req);
-        console.log(errores)
+        
         if (!errores.isEmpty()) {
 
             return res.status(400).json({ msg: errores.array() });
         }
-        console.log(req.body)
+    
 
         const { email, password } = req.body;
        
